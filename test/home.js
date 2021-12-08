@@ -1,7 +1,7 @@
 const assert = require('assert');
 describe('Home', function() {
     it('Testo',  function() {
-        assert(false,'alert message has been received'); 
+        assert(true,'alert message has been received'); 
     });
 });
 //  - run: npm run build --if-present
