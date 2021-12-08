@@ -8,10 +8,16 @@ jobs:
   build:
     name: Run API
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x, 14.x, 16.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
     steps:
-      - name: Build API
-        run: |
-          echo "Build API"
-          sleep 10s
+    - uses: actions/checkout@v2
+    - name: Build API
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
     - run: npm ci
     - run: npm test
